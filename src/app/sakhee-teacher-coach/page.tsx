@@ -1283,7 +1283,7 @@ function WaitlistModal({
                       ) : (
                         <>
                           <Mail className="w-4 h-4" />
-                          <span>GET EARLY ACCESS</span>
+                          <span>JOIN WAITLIST</span>
                         </>
                       )}
                     </motion.button>
@@ -1411,7 +1411,7 @@ export default function SakheeTeacherCoachPage() {
                   onClick={openWaitlist}
                   className="text-[#C66666] font-montserrat text-base font-bold transition-opacity hover:opacity-70 -mr-6"
                 >
-                  GET EARLY ACCESS
+                  JOIN WAITLIST
                 </motion.button>
               </div>
 
@@ -1508,7 +1508,7 @@ export default function SakheeTeacherCoachPage() {
                       borderRadius: UNIFIED_RADIUS,
                     }}
                   >
-                    GET EARLY ACCESS
+                    JOIN WAITLIST
                   </button>
                 </div>
               </motion.div>
@@ -1583,7 +1583,7 @@ export default function SakheeTeacherCoachPage() {
 
               <BlurFade delay={0.6}>
                 <div className="flex items-center justify-center">
-                  {/* GET EARLY ACCESS - Single hero CTA per user request */}
+                  {/* JOIN WAITLIST - Single hero CTA per user request */}
                   <motion.button
                     whileHover={{ scale: 1.02, y: -2 }}
                     whileTap={{ scale: 0.98 }}
@@ -1591,7 +1591,7 @@ export default function SakheeTeacherCoachPage() {
                     className={`px-10 h-[56.8px] text-white font-montserrat text-lg font-bold leading-[22px] transition-all rounded-2xl`}
                     style={{ backgroundColor: SAKHEE_COACH.primary }}
                   >
-                    GET EARLY ACCESS
+                    JOIN WAITLIST
                   </motion.button>
                 </div>
               </BlurFade>
@@ -1864,7 +1864,7 @@ export default function SakheeTeacherCoachPage() {
                   className={`px-10 h-[56.8px] text-white font-montserrat text-lg font-bold leading-[22px] transition-all rounded-2xl`}
                   style={{ backgroundColor: SAKHEE_COACH.primary }}
                 >
-                  GET EARLY ACCESS
+                  JOIN WAITLIST
                 </motion.button>
 
                 {/* Privacy info pill */}
