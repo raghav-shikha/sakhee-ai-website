@@ -410,7 +410,7 @@ export function SakheeProductPage({
               <motion.div
                 whileHover={{ scale: 1.02 }}
                 className="flex items-center justify-center cursor-pointer -ml-5"
-                onClick={() => router.push("/sakhee-ai")}
+                onClick={() => router.push("/")}
               >
                 <Image
                   src="/shikha-labs-logo.svg"
@@ -424,7 +424,7 @@ export function SakheeProductPage({
               {/* Nav Links - Desktop */}
               <div className="hidden md:flex items-center gap-10">
                 <button
-                  onClick={() => router.push("/sakhee-ai")}
+                  onClick={() => router.push("/")}
                   className="font-montserrat text-sm font-medium transition-opacity hover:opacity-70"
                   style={{ color: SAKHEE_COLORS.textLight }}
                 >
@@ -492,7 +492,7 @@ export function SakheeProductPage({
                   {/* All Products link */}
                   <button
                     onClick={() => {
-                      router.push("/sakhee-ai");
+                      router.push("/");
                       closeMobileMenu();
                     }}
                     className="block w-full text-left py-2 text-xs font-montserrat font-medium"

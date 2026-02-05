@@ -1354,7 +1354,7 @@ export default function SakheeTeacherCoachPage() {
               <motion.div
                 whileHover={{ scale: 1.02 }}
                 className="flex items-center justify-center cursor-pointer -ml-5"
-                onClick={() => router.push("/sakhee-ai")}
+                onClick={() => router.push("/")}
               >
                 <Image
                   src="/shikha-labs-logo.svg"
@@ -1368,7 +1368,7 @@ export default function SakheeTeacherCoachPage() {
               {/* Nav Links - Desktop - per Figma spacing */}
               <div className="hidden md:flex items-center gap-10">
                 <button
-                  onClick={() => router.push("/sakhee-ai")}
+                  onClick={() => router.push("/")}
                   className="font-montserrat text-sm font-medium transition-opacity hover:opacity-70"
                   style={{ color: SAKHEE_COACH.textLight }}
                 >
@@ -1451,7 +1451,7 @@ export default function SakheeTeacherCoachPage() {
                   {/* All Products link */}
                   <button
                     onClick={() => {
-                      router.push("/sakhee-ai");
+                      router.push("/");
                       closeMobileMenu();
                     }}
                     className="block w-full text-left py-2 text-xs font-montserrat font-medium"

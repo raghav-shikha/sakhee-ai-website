@@ -1,1 +1,1 @@
-export { default } from "./sakhee-ai/page";
+export { default } from "@/components/pages/SakheeAiPage";
