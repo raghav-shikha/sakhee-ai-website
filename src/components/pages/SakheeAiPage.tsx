@@ -15,19 +15,16 @@ import {
   BookOpen,
   Brain,
   CheckCircle,
-  ChevronDown,
   ClipboardCheck,
   Clock,
   FileText,
   Lightbulb,
   Mail,
-  Menu,
   MessageSquare,
   Sparkles,
   Star,
   Target,
-  Users,
-  X
+  Users
 } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -773,12 +770,9 @@ function WaitlistModal({
 export default function SakheeAILandingPage() {
   const router = useRouter();
   const [isWaitlistOpen, setIsWaitlistOpen] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isProductsDropdownOpen, setIsProductsDropdownOpen] = useState(false);
 
   const openWaitlist = () => setIsWaitlistOpen(true);
   const closeWaitlist = () => setIsWaitlistOpen(false);
-  const closeMobileMenu = () => setIsMobileMenuOpen(false);
 
   return (
     <div
@@ -830,40 +824,8 @@ export default function SakheeAILandingPage() {
                 />
               </motion.div>
 
-              {/* Nav Links - Desktop */}
-              <div className="hidden md:flex items-center gap-8">
-                {/* Products Dropdown */}
-                <div className="relative">
-                  <button
-                    onClick={() => setIsProductsDropdownOpen(!isProductsDropdownOpen)}
-                    className="flex items-center gap-1 text-black font-montserrat text-base font-bold transition-opacity hover:opacity-70"
-                  >
-                    PRODUCTS
-                    <ChevronDown
-                      className={`w-4 h-4 transition-transform ${isProductsDropdownOpen ? "rotate-180" : ""}`}
-                    />
-                  </button>
-                  <ProductsDropdown
-                    isOpen={isProductsDropdownOpen}
-                    onClose={() => setIsProductsDropdownOpen(false)}
-                  />
-                </div>
-
-                <button
-                  onClick={() => document.getElementById("features")?.scrollIntoView({ behavior: "smooth" })}
-                  className="text-black font-montserrat text-base font-bold transition-opacity hover:opacity-70"
-                >
-                  FEATURES
-                </button>
-
-                <button
-                  onClick={() => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })}
-                  className="text-black font-montserrat text-base font-bold transition-opacity hover:opacity-70"
-                >
-                  ABOUT
-                </button>
-
-                {/* CTA Button */}
+              {/* CTA - Desktop */}
+              <div className="hidden md:flex items-center">
                 <motion.button
                   whileHover={{ scale: 1.02, y: -1 }}
                   whileTap={{ scale: 0.98 }}
@@ -875,92 +837,20 @@ export default function SakheeAILandingPage() {
                 </motion.button>
               </div>
 
-              {/* Mobile Menu Button */}
+              {/* CTA - Mobile */}
               <div className="flex items-center md:hidden">
-                <button
-                  onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                  className="p-2 rounded-lg transition-colors"
-                  style={{ color: SAKHEE_COLORS.text }}
-                  aria-label="Toggle menu"
+                <motion.button
+                  whileHover={{ scale: 1.02, y: -1 }}
+                  whileTap={{ scale: 0.98 }}
+                  onClick={openWaitlist}
+                  className="px-4 py-2 text-sm font-montserrat font-bold text-white"
+                  style={{ backgroundColor: SAKHEE_COLORS.primary, borderRadius: UNIFIED_RADIUS }}
                 >
-                  {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-                </button>
+                  JOIN WAITLIST
+                </motion.button>
               </div>
             </div>
           </div>
-
-          {/* Mobile Menu Dropdown */}
-          <AnimatePresence>
-            {isMobileMenuOpen && (
-              <motion.div
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: "auto" }}
-                exit={{ opacity: 0, height: 0 }}
-                className="md:hidden border-t overflow-hidden"
-                style={{
-                  borderColor: SHIKHA.sand,
-                  backgroundColor: "rgba(251, 247, 242, 0.98)",
-                }}
-              >
-                <div className="px-4 py-4 space-y-3">
-                  <p className="text-xs font-montserrat font-bold uppercase tracking-wide mb-2" style={{ color: SAKHEE_COLORS.textLight }}>
-                    Products
-                  </p>
-                  {ACTIVE_PRODUCTS.slice(0, 5).map((product) => (
-                    <button
-                      key={product.id}
-                      onClick={() => {
-                        router.push(product.href);
-                        closeMobileMenu();
-                      }}
-                      className="block w-full text-left py-2 text-sm font-poppins"
-                      style={{ color: SAKHEE_COLORS.text }}
-                    >
-                      {product.shortName}
-                    </button>
-                  ))}
-
-                  <hr style={{ borderColor: SHIKHA.sand }} />
-
-                  <button
-                    onClick={() => {
-                      document.getElementById("features")?.scrollIntoView({ behavior: "smooth" });
-                      closeMobileMenu();
-                    }}
-                    className="block w-full text-left py-2 text-sm font-montserrat font-medium"
-                    style={{ color: SAKHEE_COLORS.text }}
-                  >
-                    FEATURES
-                  </button>
-
-                  <button
-                    onClick={() => {
-                      document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
-                      closeMobileMenu();
-                    }}
-                    className="block w-full text-left py-2 text-sm font-montserrat font-medium"
-                    style={{ color: SAKHEE_COLORS.text }}
-                  >
-                    ABOUT
-                  </button>
-
-                  <button
-                    onClick={() => {
-                      openWaitlist();
-                      closeMobileMenu();
-                    }}
-                    className="w-full py-3 text-sm font-montserrat font-bold text-white mt-2"
-                    style={{
-                      backgroundColor: SAKHEE_COLORS.primary,
-                      borderRadius: UNIFIED_RADIUS,
-                    }}
-                  >
-                    JOIN WAITLIST
-                  </button>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
         </nav>
       </BlurFade>
 
