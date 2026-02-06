@@ -145,24 +145,17 @@ function ProductCard({
   phaseColor: string;
   className?: string;
 }) {
-  const router = useRouter();
   const logoSrc = PRODUCT_LOGOS[product.id];
 
   return (
     <motion.div
       whileHover={{ y: -4, boxShadow: "0 12px 24px -8px rgba(0,0,0,0.15)" }}
-      onClick={() => router.push(product.href)}
-      className={`rounded-2xl md:rounded-3xl overflow-hidden transition-all relative flex flex-col cursor-pointer h-full ${className}`}
+      className={`rounded-2xl md:rounded-3xl overflow-hidden transition-all relative flex flex-col h-full ${className}`}
       style={{
         backgroundColor: `${phaseColor}15`, // Slightly stronger tint for full card
         border: `1px solid ${phaseColor}30`,
       }}
     >
-      {/* Subtle Explore Arrow - Top Right */}
-      <div className="absolute top-3 right-3 flex items-center gap-1 opacity-40 group-hover:opacity-70 transition-opacity z-10">
-        <ArrowRight className="w-4 h-4" style={{ color: phaseColor }} />
-      </div>
-
       {/* Content Container - Flex Column with tight spacing */}
       <div className="flex-grow flex flex-col items-center justify-center p-4 md:p-5 text-center">
 
@@ -774,7 +767,6 @@ export default function SakheeAILandingPage() {
   const router = useRouter();
   const [isWaitlistOpen, setIsWaitlistOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isProductsDropdownOpen, setIsProductsDropdownOpen] = useState(false);
 
   const openWaitlist = () => setIsWaitlistOpen(true);
   const closeWaitlist = () => setIsWaitlistOpen(false);
@@ -832,23 +824,6 @@ export default function SakheeAILandingPage() {
 
               {/* Nav Links - Desktop */}
               <div className="hidden md:flex items-center gap-8">
-                {/* Products Dropdown */}
-                <div className="relative">
-                  <button
-                    onClick={() => setIsProductsDropdownOpen(!isProductsDropdownOpen)}
-                    className="flex items-center gap-1 text-black font-montserrat text-base font-bold transition-opacity hover:opacity-70"
-                  >
-                    PRODUCTS
-                    <ChevronDown
-                      className={`w-4 h-4 transition-transform ${isProductsDropdownOpen ? "rotate-180" : ""}`}
-                    />
-                  </button>
-                  <ProductsDropdown
-                    isOpen={isProductsDropdownOpen}
-                    onClose={() => setIsProductsDropdownOpen(false)}
-                  />
-                </div>
-
                 <button
                   onClick={() => document.getElementById("features")?.scrollIntoView({ behavior: "smooth" })}
                   className="text-black font-montserrat text-base font-bold transition-opacity hover:opacity-70"
@@ -903,25 +878,6 @@ export default function SakheeAILandingPage() {
                 }}
               >
                 <div className="px-4 py-4 space-y-3">
-                  <p className="text-xs font-montserrat font-bold uppercase tracking-wide mb-2" style={{ color: SAKHEE_COLORS.textLight }}>
-                    Products
-                  </p>
-                  {ACTIVE_PRODUCTS.slice(0, 5).map((product) => (
-                    <button
-                      key={product.id}
-                      onClick={() => {
-                        router.push(product.href);
-                        closeMobileMenu();
-                      }}
-                      className="block w-full text-left py-2 text-sm font-poppins"
-                      style={{ color: SAKHEE_COLORS.text }}
-                    >
-                      {product.shortName}
-                    </button>
-                  ))}
-
-                  <hr style={{ borderColor: SHIKHA.sand }} />
-
                   <button
                     onClick={() => {
                       document.getElementById("features")?.scrollIntoView({ behavior: "smooth" });
@@ -1087,55 +1043,7 @@ export default function SakheeAILandingPage() {
               </div>
             </div>
 
-            {/* Value Props Grid - 1 per row on mobile, sleek horizontal layout */}
-            <BlurFade delay={0.5}>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6 mb-6 md:mb-8">
-                {VALUE_PROPS.map((prop, index) => (
-                  <ValuePropCard
-                    key={index}
-                    icon={prop.icon}
-                    title={prop.title}
-                    description={prop.description}
-                  />
-                ))}
-              </div>
-            </BlurFade>
-
-            {/* Stats Row - Sleek horizontal on mobile */}
-            <BlurFade delay={0.6}>
-              <div
-                className="p-4 md:p-8 flex flex-row md:grid md:grid-cols-3 gap-4 md:gap-8 overflow-x-auto md:overflow-visible"
-                style={{
-                  background: `linear-gradient(135deg, ${SAKHEE_COLORS.primarySoft}, ${SAKHEE_COLORS.cream})`,
-                  borderRadius: "16px",
-                }}
-              >
-                <div className="text-center flex-1 min-w-[90px]">
-                  <div className="font-montserrat text-2xl md:text-5xl font-bold" style={{ color: SAKHEE_COLORS.primary }}>
-                    90%
-                  </div>
-                  <p className="font-poppins text-[10px] md:text-sm mt-1 md:mt-2 leading-tight" style={{ color: SAKHEE_COLORS.textMuted }}>
-                    Time saved on planning
-                  </p>
-                </div>
-                <div className="text-center flex-1 min-w-[90px] border-l border-r md:border-0" style={{ borderColor: `${SAKHEE_COLORS.primary}20` }}>
-                  <div className="font-montserrat text-2xl md:text-5xl font-bold" style={{ color: SAKHEE_COLORS.primary }}>
-                    5 min
-                  </div>
-                  <p className="font-poppins text-[10px] md:text-sm mt-1 md:mt-2 leading-tight" style={{ color: SAKHEE_COLORS.textMuted }}>
-                    Avg lesson plan
-                  </p>
-                </div>
-                <div className="text-center flex-1 min-w-[90px]">
-                  <div className="font-montserrat text-2xl md:text-5xl font-bold" style={{ color: SAKHEE_COLORS.primary }}>
-                    100%
-                  </div>
-                  <p className="font-poppins text-[10px] md:text-sm mt-1 md:mt-2 leading-tight" style={{ color: SAKHEE_COLORS.textMuted }}>
-                    Curriculum aligned
-                  </p>
-                </div>
-              </div>
-            </BlurFade>
+            {/* Value props + stats hidden for now */}
 
           </div>
         </section>
