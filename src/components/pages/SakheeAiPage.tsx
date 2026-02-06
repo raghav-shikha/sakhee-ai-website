@@ -24,7 +24,8 @@ import {
   Sparkles,
   Star,
   Target,
-  Users
+  Users,
+  X
 } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
