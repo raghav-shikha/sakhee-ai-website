@@ -1032,7 +1032,7 @@ export default function SakheeAILandingPage() {
           </div>
         </section>
         {/* Combined Story + Value Props Section */}
-        <section className="bg-white py-16 md:py-20">
+        <section id="features" className="bg-white py-16 md:py-20">
           <div className="max-w-7xl mx-auto px-6">
 
             {/* Story Content Wrapper - Constrained Width */}
